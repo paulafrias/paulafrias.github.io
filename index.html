@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paula Frias — Criadora do CadInsan, do Panorama de Gestão de Pessoas e do República em Dados</title>
+<meta name="description" content="Paula Frias é pesquisadora em gestão pública, criadora do CadInsan, do Panorama de Gestão de Pessoas e do República em Dados. Produz indicadores e instrumentos de gestão que transformam dados em informação para a tomada de decisão.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1E8;
+    --card:#FBF9F2;
+    --ink:#12203A;
+    --ink-soft:#46536B;
+    --green:#0B6E4F;
+    --green-soft:#9FD9C0;
+    --gold:#AD8A2A;
+    --red:#93291F;
+    --line:#DAD3BE;
+    --line-soft:#E7E1CE;
+    --serif:'Fraunces', serif;
+    --sans:'Public Sans', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation:none !important; transition:none !important;}
+  }
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--red);}
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:30;
+    background:rgba(18,32,58,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding-top:14px; padding-bottom:14px; }
+  .brand{ font-family:var(--serif); font-weight:700; font-size:1.08rem; color:var(--paper); text-decoration:none; }
+  .brand span{ color:var(--green-soft); }
+  .navlinks{ display:flex; gap:22px; list-style:none; margin:0; padding:0; font-size:0.86rem; font-weight:500; }
+  .navlinks a{ color:#C9D0DC; text-decoration:none; border-bottom:2px solid transparent; padding-bottom:3px; }
+  .navlinks a:hover{ color:#fff; border-bottom-color:var(--gold); }
+  @media (max-width:760px){ .navlinks{ display:none; } }
+
+  /* ---------- HERO / CAPA ---------- */
+  .hero{
+    background:var(--ink); color:var(--paper);
+    display:grid; grid-template-columns:1.15fr 1fr;
+    min-height:min(88vh, 760px);
+  }
+  .hero-text{
+    padding:72px 56px 64px max(28px, calc((100vw - 1080px)/2 + 28px));
+    display:flex; flex-direction:column; justify-content:center;
+  }
+  .hero-photo{ position:relative; overflow:hidden; }
+  .hero-photo img{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; object-position:50% 38%;
+    display:block;
+  }
+  .hero-photo::after{
+    content:""; position:absolute; inset:0;
+    background:linear-gradient(90deg, var(--ink) 0%, rgba(18,32,58,0) 22%);
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:0.8rem; letter-spacing:0.04em;
+    color:var(--green-soft); margin:0 0 18px; text-transform:uppercase;
+  }
+  h1.name{
+    font-family:var(--serif); font-size:clamp(2.8rem, 6vw, 4.6rem);
+    font-weight:700; line-height:1; margin:0 0 22px; letter-spacing:-0.015em;
+  }
+  .creator-line{
+    font-family:var(--serif); font-size:clamp(1.25rem, 2.2vw, 1.6rem);
+    font-weight:500; line-height:1.3; margin:0 0 20px; color:#fff;
+    max-width:30ch;
+  }
+  .creator-line em{ font-style:normal; color:var(--gold); }
+  .role{ font-size:1.05rem; color:#C9D0DC; max-width:52ch; margin:0 0 32px; }
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    display:inline-block; padding:12px 20px; font-weight:600; font-size:0.92rem;
+    text-decoration:none; border:1.5px solid var(--gold);
+  }
+  .btn.primary{ background:var(--gold); color:var(--ink); }
+  .btn.primary:hover{ background:#c29c35; }
+  .btn.ghost{ color:var(--paper); }
+  .btn.ghost:hover{ background:rgba(173,138,42,0.15); }
+  @media (max-width:860px){
+    .hero{ grid-template-columns:1fr; min-height:0; }
+    .hero-photo{ order:-1; height:62vh; min-height:360px; }
+    .hero-photo::after{ background:linear-gradient(0deg, var(--ink) 0%, rgba(18,32,58,0) 30%); }
+    .hero-text{ padding:12px 28px 56px; }
+  }
+  .tricolor{ height:6px; background:linear-gradient(90deg, var(--green) 0 33.3%, var(--gold) 33.3% 66.6%, var(--red) 66.6% 100%); }
+
+  /* ---------- SECTIONS ---------- */
+  section{ padding:80px 0; border-bottom:1px solid var(--line); }
+  .section-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:14px; }
+  .section-num{ font-family:var(--mono); color:var(--gold); font-size:0.95rem; }
+  h2.h{ font-family:var(--serif); font-weight:700; font-size:clamp(1.7rem, 3vw, 2.2rem); margin:0; line-height:1.15; }
+  p.lede{ max-width:68ch; color:var(--ink-soft); margin:0 0 40px; font-size:1.05rem; }
+
+  /* ---------- CRIAÇÕES ---------- */
+  .creations{ display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; }
+  @media (max-width:900px){ .creations{ grid-template-columns:1fr; } }
+  .creation{
+    background:var(--card); border:1px solid var(--line-soft);
+    border-top:4px solid var(--green);
+    padding:30px 26px 28px; display:flex; flex-direction:column;
+  }
+  .creation.gold{ border-top-color:var(--gold); }
+  .creation.red{ border-top-color:var(--red); }
+  .badge{
+    align-self:flex-start;
+    font-family:var(--mono); font-size:0.72rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    background:var(--ink); color:var(--paper); padding:5px 10px; margin-bottom:18px;
+  }
+  .creation-meta{ font-family:var(--mono); font-size:0.78rem; color:var(--ink-soft); margin:0 0 6px; }
+  .creation-meta b{ color:var(--green); font-weight:600; }
+  .creation-title{ font-family:var(--serif); font-weight:700; font-size:1.55rem; margin:0 0 6px; line-height:1.15; }
+  .creation-what{ font-weight:600; margin:0 0 14px; font-size:0.98rem; }
+  .creation-desc{ margin:0 0 18px; color:var(--ink-soft); font-size:0.94rem; }
+  .creation-desc strong{ color:var(--ink); }
+  .uses{ margin-top:auto; padding-top:16px; border-top:1px dashed var(--line); }
+  .uses-label{ font-family:var(--mono); font-size:0.72rem; color:var(--gold); text-transform:uppercase; letter-spacing:0.05em; margin:0 0 6px; }
+  .uses p{ margin:0; font-size:0.9rem; }
+
+  .also{
+    margin-top:26px; padding:20px 24px; background:transparent;
+    border:1px solid var(--line); display:flex; gap:18px; align-items:baseline; flex-wrap:wrap;
+  }
+  .also .creation-meta{ margin:0; }
+  .also p{ margin:0; font-size:0.94rem; color:var(--ink-soft); flex:1; min-width:260px; }
+  .also strong{ color:var(--ink); }
+
+  /* ---------- FOCO / PIPELINE ---------- */
+  #foco{ background:var(--ink); color:var(--paper); border-bottom:none; }
+  #foco h2.h{ color:#fff; }
+  #foco p.lede{ color:#C9D0DC; }
+  .pipeline{ display:grid; grid-template-columns:repeat(4, 1fr); gap:0; margin-bottom:56px; }
+  .step{ position:relative; padding:22px 22px 22px 0; border-top:2px solid rgba(255,255,255,0.18); }
+  .step::before{
+    content:""; position:absolute; top:-7px; left:0; width:12px; height:12px; border-radius:50%;
+    background:var(--ink); border:2px solid var(--gold);
+  }
+  .step-n{ font-family:var(--mono); font-size:0.75rem; color:var(--gold); display:block; margin:6px 0 6px; }
+  .step-t{ font-family:var(--serif); font-size:1.3rem; font-weight:600; margin:0 0 6px; color:#fff; }
+  .step-d{ margin:0; font-size:0.9rem; color:#B9C2D1; }
+  @media (max-width:820px){ .pipeline{ grid-template-columns:1fr 1fr; row-gap:18px; } }
+  @media (max-width:480px){ .pipeline{ grid-template-columns:1fr; } }
+
+  .focus-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:1px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); }
+  @media (max-width:760px){ .focus-grid{ grid-template-columns:1fr; } }
+  .focus{ background:var(--ink); padding:28px 28px 30px; }
+  .focus-k{ font-family:var(--mono); font-size:0.75rem; color:var(--green-soft); margin:0 0 10px; }
+  .focus h3{ font-family:var(--serif); font-weight:600; font-size:1.3rem; margin:0 0 10px; color:#fff; }
+  .focus p{ margin:0; color:#C2CAD7; font-size:0.94rem; }
+
+  /* ---------- SOBRE ---------- */
+  .about-layout{ display:grid; grid-template-columns:1.35fr 1fr; gap:44px; align-items:start; }
+  @media (max-width:820px){ .about-layout{ grid-template-columns:1fr; } }
+  .about-layout p{ margin:0 0 16px; }
+  .credential-box{ background:var(--card); border:1px solid var(--line-soft); padding:28px 26px; position:relative; }
+  .credential-box::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--green), var(--gold), var(--red)); }
+  .credential-box h3{ font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em; margin:0 0 10px; color:var(--green); font-weight:600; }
+  .cred-item{ padding:14px 0; border-top:1px solid var(--line-soft); }
+  .cred-item:first-of-type{ border-top:none; }
+  .cred-degree{ font-family:var(--serif); font-weight:600; margin:0 0 3px; font-size:1.05rem; }
+  .cred-inst{ margin:0; font-size:0.86rem; color:var(--ink-soft); }
+
+  /* ---------- TRAJETÓRIA ---------- */
+  .timeline{ position:relative; padding-left:30px; }
+  .timeline::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .tl-item{ position:relative; padding-bottom:34px; }
+  .tl-item:last-child{ padding-bottom:0; }
+  .tl-item::before{ content:""; position:absolute; left:-30px; top:4px; width:12px; height:12px; background:var(--card); border:2px solid var(--green); border-radius:50%; }
+  .tl-period{ font-family:var(--mono); font-size:0.8rem; color:var(--green); display:block; margin-bottom:4px; }
+  .tl-org{ font-family:var(--serif); font-weight:600; font-size:1.18rem; margin:0 0 2px; }
+  .tl-role{ font-size:0.92rem; color:var(--ink-soft); margin:0 0 8px; }
+  .tl-desc{ margin:0; max-width:68ch; font-size:0.95rem; }
+  .tl-desc strong{ color:var(--ink); }
+
+  /* ---------- IMPRENSA ---------- */
+  .press-list{ list-style:none; margin:0; padding:0; }
+  .press-item{ display:grid; grid-template-columns:160px 1fr; gap:24px; padding:22px 0; border-top:1px solid var(--line-soft); }
+  .press-item:first-child{ border-top:none; }
+  @media (max-width:640px){ .press-item{ grid-template-columns:1fr; gap:6px; } }
+  .press-outlet{ font-family:var(--mono); font-size:0.8rem; color:var(--red); font-weight:600; }
+  .press-date{ display:block; color:var(--ink-soft); font-weight:400; margin-top:2px; }
+  .press-title{ font-family:var(--serif); font-weight:600; font-size:1.12rem; margin:0 0 6px; }
+  .press-desc{ margin:0 0 8px; color:var(--ink-soft); font-size:0.93rem; }
+  .press-link{ font-size:0.85rem; text-decoration:none; border-bottom:1px solid var(--red); }
+
+  /* ---------- EVENTOS ---------- */
+  .event-list{ list-style:none; margin:0; padding:0; }
+  .event-item{ display:flex; gap:20px; padding:18px 0; border-top:1px solid var(--line-soft); align-items:flex-start; }
+  .event-item:first-child{ border-top:none; }
+  .event-year{ font-family:var(--mono); color:var(--gold); font-size:0.85rem; min-width:88px; padding-top:2px; }
+  .event-title{ font-weight:600; margin:0 0 4px; }
+  .event-desc{ margin:0; color:var(--ink-soft); font-size:0.93rem; }
+
+
+  /* ---------- PUBLICAÇÕES ---------- */
+  .pub-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; margin-top:28px; }
+  @media (max-width:900px){ .pub-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .pub-grid{ grid-template-columns:1fr; } }
+  .pub{ background:var(--card); border:1px solid var(--line-soft); border-left:4px solid var(--green); padding:20px 20px 18px; display:flex; flex-direction:column; text-decoration:none; color:var(--ink); transition:transform .15s ease, box-shadow .15s ease; }
+  a.pub:hover{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(18,32,58,0.08); }
+  .pub.gold{ border-left-color:var(--gold); }
+  .pub.red{ border-left-color:var(--red); }
+  .pub-k{ font-family:var(--mono); font-size:0.74rem; color:var(--ink-soft); margin:0 0 8px; }
+  .pub-k b{ color:var(--green); font-weight:600; }
+  .pub-t{ font-family:var(--serif); font-weight:600; font-size:1.08rem; line-height:1.25; margin:0 0 6px; }
+  .pub-d{ font-size:0.88rem; color:var(--ink-soft); margin:0 0 14px; }
+  .pub-go{ margin-top:auto; font-size:0.84rem; font-weight:600; color:var(--red); }
+  .pub-sub{ font-family:var(--mono); font-size:0.78rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); margin:40px 0 0; }
+  .pub-sub:first-of-type{ margin-top:8px; }
+
+  /* ---------- IMPRENSA (compacta) ---------- */
+  .press-year{ font-family:var(--serif); font-weight:700; font-size:1.3rem; margin:34px 0 4px; color:var(--ink); display:flex; align-items:center; gap:12px; }
+  .press-year::after{ content:""; flex:1; height:1px; background:var(--line); }
+  .press-year:first-of-type{ margin-top:20px; }
+  .pr{ display:grid; grid-template-columns:190px 1fr auto; gap:18px; padding:13px 0; border-top:1px solid var(--line-soft); align-items:baseline; }
+  .pr:first-of-type{ border-top:none; }
+  .pr-o{ font-family:var(--mono); font-size:0.8rem; color:var(--red); font-weight:600; }
+  .pr-o span{ color:var(--ink-soft); font-weight:400; margin-left:6px; }
+  .pr-t{ font-family:var(--serif); font-weight:600; font-size:1.02rem; margin:0; line-height:1.3; }
+  .pr-t a{ color:var(--ink); text-decoration:none; border-bottom:1px solid transparent; }
+  .pr-t a:hover{ border-bottom-color:var(--red); }
+  .pr-tag{ font-family:var(--mono); font-size:0.7rem; text-transform:uppercase; letter-spacing:.05em; color:var(--green); border:1px solid var(--line); padding:2px 7px; white-space:nowrap; }
+  @media (max-width:640px){ .pr{ grid-template-columns:1fr; gap:4px; } .pr-tag{ justify-self:start; } }
+  .press-count{ font-family:var(--mono); font-size:0.85rem; color:var(--ink-soft); }
+  .event-title a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--red); }
+
+  /* ---------- CONTATO ---------- */
+  footer{ padding:72px 0 80px; }
+  .contact-box{ background:var(--ink); color:var(--paper); padding:48px 44px; position:relative; }
+  .contact-box::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--green), var(--gold), var(--red)); }
+  .contact-box h2{ font-family:var(--serif); font-size:1.9rem; margin:0 0 10px; }
+  .contact-box p{ color:#C9D0D8; margin:0 0 26px; max-width:56ch; }
+  .contact-links{ display:flex; gap:26px; flex-wrap:wrap; }
+  .contact-links a{ color:var(--paper); font-size:0.95rem; font-weight:600; border-bottom:1px solid var(--gold); text-decoration:none; padding-bottom:2px; }
+  .contact-links a:hover{ color:var(--gold); }
+  .foot-note{ text-align:center; font-size:0.78rem; color:var(--ink-soft); margin-top:30px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#topo">Paula <span>Frias</span></a>
+    <ul class="navlinks">
+      <li><a href="#criacoes">Criações</a></li>
+      <li><a href="#foco">Foco de pesquisa</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#trajetoria">Trajetória</a></li>
+      <li><a href="#publicacoes">Publicações</a></li>
+      <li><a href="#imprensa">Imprensa</a></li>
+      <li><a href="#eventos">Eventos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <div class="hero-text">
+    <p class="eyebrow">Pesquisa em gestão pública · indicadores · dados para decisão</p>
+    <h1 class="name">Paula Frias</h1>
+    <p class="creator-line">Criadora do <em>CadInsan</em>, do <em>Panorama de Gestão de Pessoas</em> e do <em>República em Dados</em>.</p>
+    <p class="role">Coordenadora de Conhecimento da República.org, consultora do Ministério do Desenvolvimento e Assistência Social (MDS) e pesquisadora do Lappcom/UFRJ. Há oito anos transforma dados públicos em indicadores e instrumentos de gestão que orientam decisões de governos em todos os níveis da federação.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#criacoes">Conheça as criações</a>
+      <a class="btn ghost" href="#contato">Entre em contato</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="paula-frias-foto.jpg" alt="Retrato de Paula Frias, sorrindo, com blazer claro e camisa verde">
+  </div>
+</header>
+<div class="tricolor" aria-hidden="true"></div>
+
+<section id="criacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="h">Ferramentas que criou</h2>
+    </div>
+    <p class="lede">Três instrumentos concebidos e desenvolvidos por Paula para levar evidências ao centro da política pública, do combate à fome à gestão do funcionalismo.</p>
+
+    <div class="creations">
+
+      <article class="creation gold">
+        <span class="badge">Criadora</span>
+        <p class="creation-meta"><b>MDS</b> · 2023–atual</p>
+        <h3 class="creation-title">CadInsan</h3>
+        <p class="creation-what">Índice municipalizado de risco de insegurança alimentar grave.</p>
+        <p class="creation-desc">Criado e operado por Paula no Ministério do Desenvolvimento e Assistência Social, com Alexandre Arbex e Marcelo Galiza, a partir dos dados do Cadastro Único. Aplica <strong>regressão logística multivariada</strong> sobre a Pnad Contínua para estimar o risco de cada família inscrita no CadÚnico, alcançando inclusive populações que as pesquisas amostrais do IBGE não cobrem, como indígenas e quilombolas.</p>
+        <div class="uses">
+          <p class="uses-label">Hoje subsidia</p>
+          <p>Plano Brasil Sem Fome e Sisan</p>
+        </div>
+      </article>
+
+      <article class="creation">
+        <span class="badge">Criadora</span>
+        <p class="creation-meta"><b>Instituto República</b> · 2022–atual</p>
+        <h3 class="creation-title">Panorama de Gestão de Pessoas</h3>
+        <p class="creation-what">Diagnóstico gratuito da gestão de servidores nos estados.</p>
+        <p class="creation-desc">Instrumento que ajuda governos estaduais a entender, com dados, como gerem suas equipes: <strong>mais de 100 indicadores</strong> em cinco áreas-chave — carreira, ingresso, desempenho, desenvolvimento e qualidade de vida no trabalho. Paula criou a metodologia e o marco teórico e coordena a aplicação junto aos governos, ao lado do Índice de Qualidade da Burocracia Pública.</p>
+        <div class="uses">
+          <p class="uses-label">Já aplicado em</p>
+          <p><strong>18 entes federativos</strong>, entre eles Paraíba, Minas Gerais, Espírito Santo e Acre</p>
+        </div>
+      </article>
+
+      <article class="creation red">
+        <span class="badge">Criadora</span>
+        <p class="creation-meta"><b>Instituto República</b> · 2023–atual</p>
+        <h3 class="creation-title">República em Dados</h3>
+        <p class="creation-what">Plataforma de dados sobre o funcionalismo público brasileiro.</p>
+        <p class="creation-desc">Plataforma de dados abertos criada, coordenada e executada por Paula, com Vanessa Campagnac. Reúne e organiza as principais fontes de dados sobre gestão de pessoas no serviço público. Inspirada no Atlas do Estado Brasileiro (Ipea) e no infoGOV (Enap), levou cerca de um ano para ser concretizada.</p>
+        <div class="uses">
+          <p class="uses-label">Usada por</p>
+          <p>Gestores públicos, jornalistas e pesquisadores</p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="also">
+      <p class="creation-meta"><b>Instituto Pereira Passos · ONU-Habitat</b> · 2018–2021</p>
+      <p><strong>Também produziu:</strong> o Índice de Progresso Social do Rio de Janeiro (2018 e 2020) e a metodologia do IPS da Maré, além do questionário e da metodologia do Censo da População em Situação de Rua do Rio (2021). O IPS mede o desenvolvimento a partir de indicadores sociais e ambientais, em três dimensões e doze componentes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="foco">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="h">Foco de pesquisa</h2>
+    </div>
+    <p class="lede">O fio condutor do trabalho: transformar dados em informação, e informação em insumo para a tomada de decisão pública.</p>
+
+    <div class="pipeline">
+      <div class="step">
+        <span class="step-n">01</span>
+        <p class="step-t">Dados</p>
+        <p class="step-d">Registros administrativos, cadastros e pesquisas amostrais.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">02</span>
+        <p class="step-t">Indicadores</p>
+        <p class="step-d">Métodos estatísticos e índices que medem o que importa.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">03</span>
+        <p class="step-t">Informação</p>
+        <p class="step-d">Plataformas, diagnósticos e análises acessíveis.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">04</span>
+        <p class="step-t">Decisão</p>
+        <p class="step-d">Evidência para gestores planejarem e priorizarem.</p>
+      </div>
+    </div>
+
+    <div class="focus-grid">
+      <div class="focus">
+        <p class="focus-k">Pesquisa</p>
+        <h3>Gestão pública</h3>
+        <p>Estudos sobre o Estado brasileiro e seus servidores: remuneração e supersalários, concursos, representatividade de gênero e desigualdades no serviço público.</p>
+      </div>
+      <div class="focus">
+        <p class="focus-k">Instrumentos</p>
+        <h3>Ferramentas de gestão</h3>
+        <p>Desenho de instrumentos práticos, como o Panorama de Gestão de Pessoas, que permitem a governos diagnosticar a própria gestão e agir com base em evidências.</p>
+      </div>
+      <div class="focus">
+        <p class="focus-k">Métricas</p>
+        <h3>Produção de indicadores</h3>
+        <p>Construção de índices robustos e comparáveis — do risco de insegurança alimentar grave (CadInsan) ao progresso social de uma cidade (IPS Rio).</p>
+      </div>
+      <div class="focus">
+        <p class="focus-k">Decisão</p>
+        <h3>Dados como insumo</h3>
+        <p>Organização e tradução de bases complexas em informação clara, como no República em Dados, para gestores, jornalistas e formuladores de política.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="h">Sobre</h2>
+    </div>
+    <div class="about-layout" style="margin-top:28px">
+      <div>
+        <p>Paula Frias é cientista social e cientista política, pesquisadora em gestão pública e especialista em produção de indicadores. Seu trabalho parte de uma pergunta prática: <strong>como transformar dados dispersos em informação que ajude o gestor público a decidir melhor?</strong></p>
+        <p>É <strong>Coordenadora de Conhecimento da República.org</strong>, onde criou o Panorama de Gestão de Pessoas e o República em Dados, coordena o Índice de Qualidade da Burocracia Pública e assina o Anuário de Gestão de Pessoas no Serviço Público. Como <strong>consultora do MDS</strong>, criou e opera o CadInsan, índice que orienta o Plano Brasil Sem Fome na identificação dos municípios com maior risco de insegurança alimentar grave. É também <strong>pesquisadora do Lappcom</strong> — Laboratório de Partidos, Eleições e Política Comparada, vinculado ao Departamento de Ciência Política da UFRJ.</p>
+        <p>Antes, pela ONU-Habitat e pelo Instituto Pereira Passos, produziu o Índice de Progresso Social do Rio de Janeiro e diagnósticos de desenvolvimento social em dez grandes complexos de favelas da cidade, incluindo a Maré. No biênio 2023–2025 integrou o <strong>Conselho Estratégico de Informações da Cidade do Rio de Janeiro</strong>, representando o Instituto República.</p>
+        <p>Suas análises sobre remuneração, concursos, desigualdade de gênero e gestão de pessoas no Estado aparecem com frequência na imprensa nacional — Folha, O Globo, Valor, BBC, Metrópoles — e em congressos de gestão pública como Consad, CLAD e Semana de Inovação da Enap.</p>
+      </div>
+      <div class="credential-box">
+        <h3>Formação</h3>
+        <div class="cred-item">
+          <p class="cred-degree">Especialização em Data Science e Analytics</p>
+          <p class="cred-inst">USP · 2023–2025</p>
+        </div>
+        <div class="cred-item">
+          <p class="cred-degree">Mestrado em Ciência Política</p>
+          <p class="cred-inst">IESP-UERJ · 2020–2022</p>
+        </div>
+        <div class="cred-item">
+          <p class="cred-degree">Graduação em Ciências Sociais</p>
+          <p class="cred-inst">UFRJ · 2015–2020</p>
+        </div>
+        <h3 style="margin-top:22px">Ferramentas e idiomas</h3>
+        <div class="cred-item">
+          <p class="cred-degree">R · SQL · Python</p>
+          <p class="cred-inst">R e SQL avançados · Python intermediário · ArcGIS</p>
+        </div>
+        <div class="cred-item">
+          <p class="cred-degree">Inglês e espanhol</p>
+          <p class="cred-inst">Inglês avançado · espanhol intermediário</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="trajetoria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <h2 class="h">Trajetória profissional</h2>
+    </div>
+    <div class="timeline" style="margin-top:28px">
+      <div class="tl-item">
+        <span class="tl-period">mai. 2022 — atual</span>
+        <p class="tl-org">Instituto República</p>
+        <p class="tl-role">Coordenadora de Conhecimento</p>
+        <p class="tl-desc">Gestão da área e da equipe de conhecimento, orçamento, contratos e planejamento estratégico. Criou e coordena o <strong>Panorama de Gestão de Pessoas</strong> (aplicado em 18 entes federativos) e o <strong>Índice de Qualidade da Burocracia Pública</strong>, com articulação e negociação direta com governos estaduais e municipais. Coordena o <strong>República em Dados</strong> e é autora e coordenadora do Anuário de Gestão de Pessoas no Serviço Público.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">ago. 2023 — atual</span>
+        <p class="tl-org">Ministério do Desenvolvimento e Assistência Social, Família e Combate à Fome (MDS)</p>
+        <p class="tl-role">Consultora</p>
+        <p class="tl-desc">Criou e opera o <strong>CadInsan</strong>, índice que mensura o risco de insegurança alimentar grave a partir da base do Cadastro Único, hoje usado para subsidiar o Plano Brasil Sem Fome e o Sisan.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">Pesquisa acadêmica</span>
+        <p class="tl-org">Lappcom — Laboratório de Partidos, Eleições e Política Comparada</p>
+        <p class="tl-role">Pesquisadora · Departamento de Ciência Política da UFRJ / PPGCS-UFRRJ</p>
+        <p class="tl-desc">Pesquisa sobre eleições, partidos e política local, com foco em análise de dados aplicada à ciência política. Apoiou a coordenação do laboratório.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">ago. 2023 — 2025</span>
+        <p class="tl-org">Conselho Estratégico de Informações da Cidade do Rio de Janeiro</p>
+        <p class="tl-role">Conselheira · Instituto Pereira Passos (IPP), representando o Instituto República</p>
+        <p class="tl-desc">Designada para o biênio 2023/2025 pelo prefeito do Rio de Janeiro, conforme o <a href="http://www.rio.rj.gov.br/dlstatic/10112/5929649/4394241/DO15.08.2023PG1112.pdf" target="_blank" rel="noopener">Diário Oficial do Município de 15/08/2023</a>.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">dez. 2019 — abr. 2022</span>
+        <p class="tl-org">ONU-Habitat — Programa Territórios Sociais</p>
+        <p class="tl-role">Analista de Informação · Prefeitura do Rio de Janeiro / IPP</p>
+        <p class="tl-desc">Monitorou o índice de pobreza multidimensional de dez grandes complexos de favelas do Rio, incluindo a Maré, com atuação em campo e articulação com as secretarias de Saúde, Assistência Social e Educação. Produziu o <strong>Índice de Progresso Social do Rio</strong> (2018 e 2020), elaborou o questionário e a metodologia do <strong>Censo da População em Situação de Rua</strong> (2021), avaliou o programa Turno Único e apoiou o Mapa da Mulher Carioca e o Comitê de Prevenção ao Homicídio de Adolescentes.</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-period">mar. 2018 — dez. 2019</span>
+        <p class="tl-org">Instituto Pereira Passos (IPP)</p>
+        <p class="tl-role">Prefeitura do Rio de Janeiro</p>
+        <p class="tl-desc">Análise de dados na produção de índices, questionários e avaliações de políticas públicas da cidade. Elaborou a metodologia e o cálculo do IPS da Maré e calculou o IPS do Rio de Janeiro de 2018.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="publicacoes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05</span>
+      <h2 class="h">Publicações e estudos</h2>
+    </div>
+    <p class="pub-sub">Anuários da República.org</p>
+    <div class="pub-grid">
+      <a class="pub gold" href="https://republica.org/anuario/" target="_blank" rel="noopener"><p class="pub-k"><b>República.org</b> · 2026 · vol. III</p><p class="pub-t">Anuário de Gestão de Pessoas no Serviço Público 2026</p><p class="pub-d">Terceira edição do raio-x da força de trabalho pública brasileira.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub gold" href="https://republica.org/wp-content/uploads/2025/10/05-anuario-2025-RepublicaOrg.pdf" target="_blank" rel="noopener"><p class="pub-k"><b>República.org</b> · 2025 · vol. II</p><p class="pub-t">Anuário de Gestão de Pessoas no Serviço Público 2025</p><p class="pub-d">Perfil dos 12,6 milhões de profissionais públicos, gestão do desempenho e equidade.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub gold" href="https://republica.org/2024/10/31/anuario-revela-perfil-e-desafios-do-servico-publico/" target="_blank" rel="noopener"><p class="pub-k"><b>República.org</b> · 2024 · vol. I</p><p class="pub-t">Anuário de Gestão de Pessoas no Serviço Público 2024</p><p class="pub-d">Primeiro volume: perfil e desafios do serviço público, desmontando mitos com dados.</p><span class="pub-go">Acessar →</span></a>
+    </div>
+
+    <p class="pub-sub">Indicadores e instrumentos</p>
+    <div class="pub-grid">
+      <a class="pub " href="https://www.gov.br/mds/pt-br/Sisan/vigilancia-do-sisan/documento-cadinsan/cadinsan-2025.pdf" target="_blank" rel="noopener"><p class="pub-k"><b>MDS</b> · 2025</p><p class="pub-t">CadInsan — Indicador de Risco de Insegurança Alimentar Municipal</p><p class="pub-d">Relatório técnico com a metodologia do índice construído a partir do CadÚnico.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub " href="https://republica.org/wp-content/uploads/2025/10/Panorama-de-Gestao-de-Pessoas-Governo-Federal.pdf" target="_blank" rel="noopener"><p class="pub-k"><b>República.org</b> · 2025</p><p class="pub-t">Panorama de Gestão de Pessoas — Governo Federal</p><p class="pub-d">Primeira aplicação do PGP no governo federal, em cooperação com o MGI.</p><span class="pub-go">Acessar →</span></a>
+      <div class="pub "><p class="pub-k"><b>República.org</b></p><p class="pub-t">Marco Teórico do Panorama de Gestão de Pessoas</p><p class="pub-d">Base conceitual e metodológica do diagnóstico aplicado em estados e municípios.</p></div>
+    </div>
+
+    <p class="pub-sub">Índice de Progresso Social — Rio de Janeiro</p>
+    <div class="pub-grid">
+      <a class="pub red" href="https://www.data.rio/documents/2b5e629dbe304a17a4fe6a5b58dd1d05" target="_blank" rel="noopener"><p class="pub-k"><b>Instituto Pereira Passos</b> · 2020</p><p class="pub-t">IPS do Município do Rio de Janeiro 2020</p><p class="pub-d">Relatório com os resultados e a metodologia do índice por região administrativa.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub red" href="https://www.data.rio/app/ips-rio-indice-de-progresso-social-da-cidade-do-rio-de-janeiro" target="_blank" rel="noopener"><p class="pub-k"><b>Instituto Pereira Passos</b> · 2018</p><p class="pub-t">IPS do Município do Rio de Janeiro 2018</p><p class="pub-d">Resultados das edições 2016 e 2018 do IPS Rio no Data.Rio.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub red" href="https://www.data.rio/datasets/819f7e5d98d54fe38ddac54fe212a9b5" target="_blank" rel="noopener"><p class="pub-k"><b>Instituto Pereira Passos</b> · 2019</p><p class="pub-t">IPS da Maré</p><p class="pub-d">Metodologia e cálculo do IPS da RA da Maré e de suas 19 comunidades.</p><span class="pub-go">Acessar →</span></a>
+    </div>
+
+    <p class="pub-sub">Estudos e pesquisa</p>
+    <div class="pub-grid">
+      <a class="pub " href="https://dados.republica.org/biblioteca" target="_blank" rel="noopener"><p class="pub-k"><b>República em Dados</b></p><p class="pub-t">Biblioteca de estudos da República.org</p><p class="pub-d">Todos os estudos e relatórios da organização sobre gestão de pessoas no serviço público.</p><span class="pub-go">Acessar →</span></a>
+      <a class="pub " href="https://dados.republica.org/biblioteca" target="_blank" rel="noopener"><p class="pub-k"><b>República.org</b> · 2024</p><p class="pub-t">Onde estão as mulheres no serviço público?</p><p class="pub-d">Representatividade, remuneração e liderança feminina no Estado brasileiro.</p><span class="pub-go">Acessar →</span></a>
+      <div class="pub "><p class="pub-k"><b>IESP-UERJ</b> · 2022</p><p class="pub-t">A topologia das redes eleitorais no território fluminense</p><p class="pub-d">Dissertação de mestrado em Ciência Política.</p></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="imprensa">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">06</span>
+      <h2 class="h">Na imprensa</h2>
+    </div>
+    <p class="press-count">28 matérias, entrevistas e artigos entre 2022 e 2026</p>
+    <h3 class="press-year">2026</h3>
+    <div>
+      <div class="pr"><span class="pr-o">Folha de S.Paulo<span>nov.</span></span><p class="pr-t"><a href="https://www1.folha.uol.com.br/mercado/2026/11/sem-contar-penduricalhos-distancia-entre-topo-e-classe-media-do-servico-publico-diminui.shtml" target="_blank" rel="noopener">Sem contar penduricalhos, distância entre topo e classe média do serviço público diminui</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">FGV Ibre<span>25 set.</span></span><p class="pr-t"><a href="https://ibre.fgv.br/blog-da-conjuntura-economica/artigos/representatividade-impacta-o-servico-publico-afirma-paula-frias" target="_blank" rel="noopener">“Representatividade impacta o serviço público”, afirma Paula Frias, da República.org</a></p><span class="pr-tag">Entrevista</span></div>
+      <div class="pr"><span class="pr-o">PNUD<span>22 set.</span></span><p class="pr-t"><a href="https://www.undp.org/pt/brazil/blog/gestao-publica-baseada-em-evidencias-um-estudo-sobre-cargos-e-carreiras" target="_blank" rel="noopener">Gestão pública baseada em evidências: um estudo sobre cargos e carreiras</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Prefeitura de BH<span>20 set.</span></span><p class="pr-t"><a href="https://prefeitura.pbh.gov.br/noticias/pbh-alcanca-86-em-gestao-do-desenvolvimento-de-pessoas-aponta-diagnostico-da-0" target="_blank" rel="noopener">PBH alcança 86% em gestão do desenvolvimento de pessoas, aponta diagnóstico da República.org</a></p><span class="pr-tag">PGP</span></div>
+      <div class="pr"><span class="pr-o">República.org<span>20 ago.</span></span><p class="pr-t"><a href="https://republica.org/2026/08/20/carreiras-salarios-supersalarios-servico-publico/" target="_blank" rel="noopener">Agenda propõe reorganizar carreiras e conter supersalários</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">República.org<span>26 jun.</span></span><p class="pr-t"><a href="https://republica.org/2026/06/26/republica-org-defende-gestao-de-pessoas-como-caminho-para-melhorar-servicos-publicos/" target="_blank" rel="noopener">República.org defende gestão de pessoas no Encontro do SIPEC</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Jornal da Band<span>26 mai.</span></span><p class="pr-t"><a href="https://www.youtube.com/live/y7BbUtr1AZE" target="_blank" rel="noopener">CNJ cria contracheques únicos para juízes</a></p><span class="pr-tag">TV</span></div>
+      <div class="pr"><span class="pr-o">Vocativo<span>27 fev.</span></span><p class="pr-t"><a href="https://vocativo.com/2026/02/27/em-um-ano-amazonas-paga-r-48-milhoes-a-membros-do-mpam/" target="_blank" rel="noopener">Em um ano, Amazonas paga R$ 48 milhões a membros do MPAM</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">18 Horas<span>24 fev.</span></span><p class="pr-t"><a href="https://18horas.com.br/noticias/ministerio-publico-do-amazonas-pagou-r-48-milhoes-em-retroativos-a-seus-membros-em-2023-e-2024-aponta-relatorio-de-ongs/" target="_blank" rel="noopener">Ministério Público do Amazonas pagou R$ 48 milhões em retroativos a seus membros em 2023 e 2024</a></p><span></span></div>
+    </div>
+    <h3 class="press-year">2025</h3>
+    <div>
+      <div class="pr"><span class="pr-o">Acesse Política<span>28 out.</span></span><p class="pr-t"><a href="https://acessepolitica.com.br/noticia/165950/municipios-pequenos-concentram-mais-de-10-de-cargos-comissionados-e-enfrentam-impactos-da-reforma" target="_blank" rel="noopener">Municípios pequenos concentram mais de 10% de cargos comissionados e enfrentam impactos da reforma</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">O Sul<span>28 out.</span></span><p class="pr-t"><a href="https://www.osul.com.br/cidades-pequenas-tem-mais-servidor-sem-concurso-do-que-municipios-maiores/" target="_blank" rel="noopener">Cidades pequenas têm mais servidor sem concurso do que municípios maiores</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">AzMina<span>4 ago.</span></span><p class="pr-t"><a href="https://azmina.com.br/colunas/98-das-unidades-prisionais-do-pais-nao-contam-com-ginecologistas/" target="_blank" rel="noopener">98% das unidades prisionais do país não contam com ginecologistas</a></p><span class="pr-tag">Coluna</span></div>
+      <div class="pr"><span class="pr-o">República.org<span>30 jul.</span></span><p class="pr-t"><a href="https://republica.org/2025/07/30/desigualdade-de-genero-marcou-a-primeira-edicao-do-concurso-nacional-unificado-aponta-especialista/" target="_blank" rel="noopener">Desigualdade de gênero marcou a primeira edição do Concurso Nacional Unificado, aponta especialista</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Metrópoles<span>14 jul.</span></span><p class="pr-t"><a href="https://www.metropoles.com/brasil/desigualdade-de-genero-marcou-1a-edicao-do-cnu" target="_blank" rel="noopener">Desigualdade de gênero marcou 1ª edição do CNU</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">BBC Brasil<span>29 jan.</span></span><p class="pr-t"><a href="https://www.bbc.com/portuguese/articles/ce3nxwk95l3o" target="_blank" rel="noopener">Padre Fábio de Melo sobre a depressão, que afeta 12 milhões de brasileiros</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Jota<span>6 jan.</span></span><p class="pr-t"><a href="https://www.jota.info/artigos/precisamos-falar-sobre-assedio-no-servico-publico" target="_blank" rel="noopener">Precisamos falar sobre assédio no serviço público</a></p><span class="pr-tag">Artigo</span></div>
+    </div>
+    <h3 class="press-year">2024</h3>
+    <div>
+      <div class="pr"><span class="pr-o">Enap<span>28 nov.</span></span><p class="pr-t"><a href="https://www.enap.gov.br/pt/acontece/noticias/parcerias-e-dados-no-centro-das-iniciativas-para-inovacao-da-gestao-publica" target="_blank" rel="noopener">Parcerias e dados no centro das iniciativas para inovação da gestão pública</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">República.org<span>18 nov.</span></span><p class="pr-t"><a href="https://republica.org/2024/11/18/por-que-salarios-no-setor-publico-variam-ate-808-para-as-mesmas-funcoes/" target="_blank" rel="noopener">Por que salários no setor público variam até 808% para as mesmas funções?</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">O Globo<span>16 nov.</span></span><p class="pr-t"><a href="https://oglobo.globo.com/opiniao/artigos/coluna/2024/11/brasil-nao-tem-como-sustentar-supersalarios.ghtml" target="_blank" rel="noopener">Brasil não tem como sustentar supersalários</a></p><span class="pr-tag">Opinião</span></div>
+      <div class="pr"><span class="pr-o">Valor Econômico<span>11 nov.</span></span><p class="pr-t"><a href="https://valor.globo.com/politica/coluna/a-reforma-administrativa-por-vias-tortas.ghtml" target="_blank" rel="noopener">A reforma administrativa por vias tortas</a></p><span class="pr-tag">Coluna</span></div>
+    </div>
+    <h3 class="press-year">2023</h3>
+    <div>
+      <div class="pr"><span class="pr-o">Anffa Sindical<span>14 nov.</span></span><p class="pr-t"><a href="https://www.anffasindical.org.br/index.php/noticias/noticias-do-sindicato/4667-anffa-sindical-recebe-instituto-republica-para-discussao-sobre-a-gestao-de-pessoas-no-servico-publico" target="_blank" rel="noopener">Anffa Sindical recebe Instituto República para discussão sobre a gestão de pessoas no serviço público</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">BBC Brasil<span>5 nov.</span></span><p class="pr-t"><a href="https://www.bbc.com/portuguese/articles/czkekymmv55o" target="_blank" rel="noopener">Por que o Brasil tem a população mais depressiva da América Latina</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Folha de S.Paulo<span>22 jul.</span></span><p class="pr-t"><a href="https://www1.folha.uol.com.br/mercado/2023/07/sem-supersalarios-70-dos-servidores-publicos-brasileiros-ganham-ate-r-5000.shtml" target="_blank" rel="noopener">Sem supersalários, 70% dos servidores públicos brasileiros ganham até R$ 5.000</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">O Globo<span>18 jul.</span></span><p class="pr-t"><a href="https://oglobo.globo.com/brasil/noticia/2023/07/18/nova-plataforma-de-dados-publicos-e-lancada-pelo-instituto-republicaorg.ghtml" target="_blank" rel="noopener">Nova plataforma de dados públicos é lançada pelo Instituto República.org</a></p><span class="pr-tag">República em Dados</span></div>
+      <div class="pr"><span class="pr-o">Veja<span>8 mar.</span></span><p class="pr-t"><a href="https://veja.abril.com.br/coluna/matheus-leitao/pesquisa-revela-a-disparidade-de-genero-com-mulheres-no-servico-publico" target="_blank" rel="noopener">Pesquisa revela a disparidade de gênero com mulheres no serviço público</a></p><span></span></div>
+    </div>
+    <h3 class="press-year">2022</h3>
+    <div>
+      <div class="pr"><span class="pr-o">Vermelho<span>25 nov.</span></span><p class="pr-t"><a href="https://vermelho.org.br/2022/11/25/cotas-levam-negros-ao-servico-publico-mas-numero-estagna-com-bolsonaro/" target="_blank" rel="noopener">Cotas levam negros ao serviço público, mas número estagna com Bolsonaro</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">BBC Brasil<span>11 ago.</span></span><p class="pr-t"><a href="https://www.bbc.com/portuguese/brasil-62490534" target="_blank" rel="noopener">O que é ser bolsonarista?</a></p><span></span></div>
+      <div class="pr"><span class="pr-o">Mídia Ninja<span>21 jul.</span></span><p class="pr-t"><a href="https://midianinja.org/news/mais-de-26-dos-estados-nao-incluem-lgbtqiapn-em-diretrizes-de-governo/" target="_blank" rel="noopener">Mais de 26% dos estados não incluem LGBTQIAPN+ em diretrizes de governo</a></p><span></span></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="eventos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">07</span>
+      <h2 class="h">Eventos e palestras</h2>
+    </div>
+    <ul class="event-list" style="margin-top:20px">
+      <li class="event-item">
+        <span class="event-year">2026</span>
+        <div>
+          <p class="event-title">XV Congresso Consad de Gestão Pública — Fortaleza</p>
+          <p class="event-desc">Mesa-redonda “Panorama de Gestão de Pessoas”, representando a República.org em debate com secretários estaduais sobre gestão de pessoas baseada em dados e evidências.</p>
+        </div>
+      </li>
+      <li class="event-item">
+        <span class="event-year">2026</span>
+        <div>
+          <p class="event-title"><a href="https://republica.org/2026/06/26/republica-org-defende-gestao-de-pessoas-como-caminho-para-melhorar-servicos-publicos/" target="_blank" rel="noopener">Encontro do SIPEC — Brasília (MGI)</a></p>
+          <p class="event-desc">Apresentou a plataforma República em Dados e participou da divulgação do estudo “Onde estão as mulheres no serviço público?”, com gestores federais e pesquisadores.</p>
+        </div>
+      </li>
+      <li class="event-item">
+        <span class="event-year">2024</span>
+        <div>
+          <p class="event-title"><a href="https://www.enap.gov.br/pt/acontece/noticias/parcerias-e-dados-no-centro-das-iniciativas-para-inovacao-da-gestao-publica" target="_blank" rel="noopener">XXIX Congresso Internacional do CLAD — Brasília</a></p>
+          <p class="event-desc">Mesa-redonda “Cooperação em Dados e Análise” (CODA), com a Enap: apresentou o trabalho da República.org para qualificar e padronizar dados de gestão de pessoas na administração pública.</p>
+        </div>
+      </li>
+      <li class="event-item">
+        <span class="event-year">2023</span>
+        <div>
+          <p class="event-title">Semana de Inovação Enap — Brasília</p>
+          <p class="event-desc">Palestra “O uso de dados e evidências na área de gestão de pessoas do setor público: quatro plataformas que transformam os dados em informação”, ao lado de Felix Lopez (Ipea), Mirian Guimarães (MGI), Pedro Masson (Enap) e Vanessa Campagnac (República.org).</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer id="contato">
+  <div class="wrap">
+    <div class="contact-box">
+      <h2>Vamos conversar</h2>
+      <p>Rio de Janeiro, RJ. Aberta a pesquisas, projetos, palestras, colunas e colaborações sobre gestão pública, produção de indicadores e uso de dados para a tomada de decisão.</p>
+      <div class="contact-links">
+        <a href="mailto:paulafriasds@gmail.com">paulafriasds@gmail.com</a>
+        <a href="https://www.linkedin.com/in/paula-frias-77322a102/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:+5521967117882">(21) 96711-7882</a>
+      </div>
+    </div>
+    <p class="foot-note">© 2026 Paula Frias</p>
+  </div>
+</footer>
+
+</body>
+</html>
